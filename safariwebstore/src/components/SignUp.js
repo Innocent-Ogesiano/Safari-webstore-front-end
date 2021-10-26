@@ -38,7 +38,7 @@
               setSuccessMessage('')
             },5000)
 
-            axios.post('http://localhost:8080/signup',{email:email,password:password,firstName:firstName,
+            axios.post('https://safari-webstore-008.herokuapp.com/signup',{email:email,password:password,firstName:firstName,
             lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender,
             newsLetterSub: newsLetterSub
           
@@ -56,52 +56,52 @@
 
            if(!firstName&&!lastName&&!email&&!password&&!confirmPassword&&!dateOfBirth&&!gender){
               setErrorMessage('All fields required')
-              setSuccessMessage(false)
+            
 
           }
           else if(!firstName){
             setErrorMessage('First name required')
-            setSuccessMessage(false)
+          
           }
 
           else if(!lastName){
             setErrorMessage('Last name required')
-            setSuccessMessage(false)
+          
           }
 
           else if(!email){
             setErrorMessage('Email required')
-            setSuccessMessage(false)
+          
           }
 
 
           else if(!password){
             setErrorMessage('Password required')
-            setSuccessMessage(false)
+          
           }
           else if(password.length<6){
             setErrorMessage('Password must be at least 6 characters')
-            setSuccessMessage(false)
+          
           }
 
           else if(!confirmPassword){
             setErrorMessage('Confirm password required')
-            setSuccessMessage(false)
+          
           }
 
           else if(confirmPassword!==password){
             setErrorMessage('Passwords must match')
-            setSuccessMessage(false)
+          
           }
 
           else if(!dateOfBirth){
             setErrorMessage('Date of birth required')
-            setSuccessMessage(false)
+          
           }
 
           else if(!gender){
             setErrorMessage('Gender required')
-            setSuccessMessage(false)
+          
           }
          
 
