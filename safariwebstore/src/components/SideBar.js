@@ -7,7 +7,7 @@ export default function SideBar() {
     <>
       <div className={sidebar.container}>
         <div className={sidebar.item}>
-          <i class="fas fa-times close" id={sidebar["close-icon"]}></i>
+          <i className="fas fa-times close" id={sidebar["close-icon"]}></i>
         </div>
         <div className={sidebar.item}>
           <Link className={sidebar.link} to="/logo">

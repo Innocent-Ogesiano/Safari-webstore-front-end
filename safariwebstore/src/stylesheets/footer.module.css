@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 .container{
-position: absolute;
-bottom: 0;
+position:absolute;
+top: 130%;
 height:200px;
 width:1440px;
 background: #F5F5F5;
