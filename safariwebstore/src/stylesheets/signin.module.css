@@ -1,0 +1,128 @@
+.container {
+    width: 100%;
+    min-width: 350px;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-content: space-between;
+  align-items: stretch;
+  grid-row-gap: 50px;
+}
+
+
+.form {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+}
+.form .formGroup {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  margin-inline: 0;
+  margin-block: 7px;
+}
+.form .formGroup input{
+    border: 1px solid #000000;
+    margin-block: 10px;
+    outline: none;
+    padding-inline: 10px;
+    padding-block: 7px;
+    border-radius: 4px;
+    box-shadow: none;
+    background-color: white;
+}
+.form .formGroup:nth-last-of-type(2) {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.forgotPassword{
+    color: black;
+}
+.form .formGroup:last-of-type input {
+  background: rgb(240, 58, 88);
+  border-radius: 6px;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  height: 47px;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* UI/Background */
+  color: #ffffff;
+}
+.form .formGroup:nth-last-of-type(2) input {
+  margin-right: 10px;
+}
+.form .formGroup label {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  /* identical to box height, or 129% */
+  color: #000000;
+}
+.bottom h5 {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  line-height: 18px;
+  /* identical to box height, or 90% */
+  letter-spacing: 0.2px;
+  color: #000000;
+}
+
+button{
+  background: rgb(240, 58, 88);
+  border: none;
+  height: 47px;
+  color: white;
+  border-radius: 6px;
+  font-family: Mulish;
+  font-weight: bold;
+  margin-top: 15px;
+  
+}
+
+input[type="radio"]{
+  margin: 0 10px 0 10px;
+}
+
+
+
+input[type="checkbox"]{
+  margin: 0 0 0 0px;
+}
+
+.checkbox{
+  display: inline-flex;
+  align-items: center;
+} 
+
+.checkbox-input{
+  display: none;
+}
+
+.checkbox-box{
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid gray;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+
