@@ -1,4 +1,4 @@
-    import React,{useState} from "react";
+import React,{useState} from "react";
     import signinStyle from "../stylesheets/signin.module.css";
     import axios from  'axios';
     import Alert from '@mui/material/Alert'
@@ -13,14 +13,13 @@
         const [confirmPassword, setConfirmPassword]= useState('')
         const [dateOfBirth, setDateOfBirth]= useState('')
         const [gender, setGender]= useState('')
-        const [isLoading, setIsLoading]= useState('')
         const [errorMessage, setErrorMessage]= useState('')
         const [successMessage, setSuccessMessage]= useState('')
         const [newsLetterSub, setNewsLetterSub]= useState(false)
 
         function handleSubmit(e){
           e.preventDefault()
-          setIsLoading(true)
+          
 
      
           if(firstName&&lastName&&email&&(password.length>=6)&&(confirmPassword===password)&&dateOfBirth&&gender){
@@ -33,25 +32,21 @@
             setDateOfBirth('')
             setGender('')
             setNewsLetterSub(false)
-            setSuccessMessage("Successfully registered")
+            setSuccessMessage("Registration successful, check your email to verify your account")
             setTimeout(()=>{
               setSuccessMessage('')
             },5000)
 
-            axios.post('https://safari-webstore-008.herokuapp.com/signup',{email:email,password:password,firstName:firstName,
+            axios.post('http://localhost:8080/signup',{email:email,firstName:firstName,
             lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender,
             newsLetterSub: newsLetterSub
           
           
           
           })
-            .then(response=>{
-              setIsLoading(false)
-              console.log(response.status)
 
             
-            })
-           
+            
           }
 
            if(!firstName&&!lastName&&!email&&!password&&!confirmPassword&&!dateOfBirth&&!gender){
