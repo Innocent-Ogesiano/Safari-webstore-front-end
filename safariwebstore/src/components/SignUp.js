@@ -19,7 +19,7 @@ import React,{useState} from "react";
 
         function handleSubmit(e){
           e.preventDefault()
-          
+        
 
      
           if(firstName&&lastName&&email&&(password.length>=6)&&(confirmPassword===password)&&dateOfBirth&&gender){
