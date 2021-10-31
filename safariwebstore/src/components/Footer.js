@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import footer from "../stylesheets/footer.module.css";
 import "../styles/search.css";
@@ -27,7 +27,9 @@ export default function Footer() {
           <div>
             <Link className={footer.link} to="/">
               <div className={footer.linkContainer}>
-                <FacebookIcon fontSize="small" className={footer.icon} />
+                <i
+                  className={`fab fa-facebook-f footer.icon ${footer.icon}`}
+                ></i>
                 Facebook
               </div>
             </Link>
@@ -39,7 +41,8 @@ export default function Footer() {
             </Link>
             <Link className={footer.link} to="/">
               <div className={footer.linkContainer}>
-                <InstagramIcon fontSize="small" className={footer.icon} />
+                <i className={`fab fa-instagram ${footer.icon}`}></i>
+                {/* <InstagramIcon fontSize="small" className={footer.icon} /> */}
                 Instagram
               </div>
             </Link>

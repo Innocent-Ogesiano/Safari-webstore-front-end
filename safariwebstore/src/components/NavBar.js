@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import navbar from "../stylesheets/navbar.module.css";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Logo from "../logo.svg";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export default function NavBar() {
+export default function NavBar({
+  sidebarState,
+  setSideBarState,
+  toggleSidebar,
+}) {
   return (
     <>
       <div className={navbar.container}>
-        <div className={navbar.item}>
+        <div
+          className={navbar.item}
+          onClick={() => toggleSidebar(setSideBarState(!sidebarState))}
+        >
           <i className="fas fa-bars"></i>
         </div>
         <div className={navbar.item}>
@@ -45,6 +49,7 @@ export default function NavBar() {
             id="standard-basic"
             variant="standard"
             placeholder="Search..."
+            className={navbar.inputStyle}
             InputProps={{
               endAdornment: <SearchIcon />,
             }}
@@ -52,17 +57,17 @@ export default function NavBar() {
         </div>
         <div className={navbar.item}>
           <Link className={navbar.link} to="/account">
-            <AccountCircleIcon></AccountCircleIcon>
+            <i class="fas fa-user fa-lg"></i>
           </Link>
         </div>
         <div className={navbar.item}>
           <Link className={navbar.link} to="/cart">
-            <ShoppingCartIcon style={{ color: "#ED165F" }}></ShoppingCartIcon>
+            <i class="fas fa-cart-plus fa-lg" style={{ color: "#ED165F" }}></i>
           </Link>
         </div>
         <div className={navbar.item} id={navbar["fav-icon"]}>
           <Link className={navbar.link} to="/favourite">
-            <FavoriteIcon></FavoriteIcon>
+            <i class="fas fa-heart fa-lg"></i>
           </Link>
         </div>
       </div>
