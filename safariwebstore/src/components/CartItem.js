@@ -1,75 +1,65 @@
-import React from "react";
-import { Grid, TextField } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
+import cartItemStyle from "../stylesheets/cartItem.module.css";
+import productImage from "../icons/image1.png";
+import "../styles/numberInput.css";
+import currencyFormatter from "../../src/currencyFormerter";
 
-export default function CartItem() {
-  const [currency, setCurrency] = React.useState("EUR");
-
-  const currencies = [
-    {
-      value: "1",
-      label: "1",
-    },
-    {
-      value: "2",
-      label: "2",
-    },
-    {
-      value: "3",
-      label: "3",
-    },
-    {
-      value: "4",
-      label: "4",
-    },
-  ];
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
+export default function CartItem(product) {
+  const [currentPrice, setCurrentPrice] = useState(product.productData.price);
+  const currentQuantity = useRef(product.productData.quantity);
+  useEffect(() => {
+    setCurrentPrice(
+      (currentPrice) => currentPrice * currentQuantity.current.value
+    );
+  }, []);
+  const updateSubtotal = (e) => {
+    setCurrentPrice(
+      (currentPrice) => currentPrice * currentQuantity.current.value
+    );
   };
   return (
     <>
-      <Grid
-        container
-        spacing={{ xs: 0, md: 0, lg: 0, xl: 0 }}
-        style={{
-          backgroundColor: "white",
-          height: "169px",
-          background: "#FFFFFF",
-          boxShadow: "0px 0px 5px 1px rgba(0, 0, 0, 0.1)",
-        }}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item xs style={{ borderRight: "2px solid #ccc" }}>
-          <h6>ITEM DESCRIPTION</h6>
-        </Grid>
-        <Grid item xs>
-          <TextField
-            id="standard-select"
-            select
-            size="large"
-            style={{ width: "30%" }}
-            value={currency}
-            onChange={handleChange}
-            SelectProps={{
-              native: true,
-            }}
-            variant="standard"
-          >
-            {currencies.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item xs>
-          <h6 className="price">&#8358;10, 000</h6>
-        </Grid>
-        <Grid item xs>
-          <h6 className="price">&#x20A6;10, 000</h6>
-        </Grid>
-      </Grid>
+      <div className={cartItemStyle.container}>
+        <div className={cartItemStyle.content}>
+          <img
+            src={productImage}
+            alt={productImage}
+            className={cartItemStyle.productImage}
+          />
+          <div className={cartItemStyle.mid}>
+            <div className={cartItemStyle.productDetails}>
+              <h6>{product.productData.productName}</h6>
+              <small>{product.productData.size}</small>
+            </div>
+
+            <div className={cartItemStyle.moveToFavorites}>
+              <i class="far fa-heart"></i>
+              MOVE TO FAVOURITES
+            </div>
+          </div>
+          <div className={cartItemStyle.remove}>
+            <i class="fas fa-times-circle"></i>
+            REMOVE
+          </div>
+        </div>
+        <div className={cartItemStyle.quantity}>
+          <input
+            type="number"
+            defaultValue={product.productData.quantity}
+            min="1"
+            max="1000"
+            ref={currentQuantity}
+            className={cartItemStyle.quantityInput}
+            onKeyUp={updateSubtotal}
+          />
+        </div>
+        <div className={cartItemStyle.price}>
+          {currencyFormatter.format(product.productData.price)}
+        </div>
+        <div className={cartItemStyle.subTotal}>
+          {currencyFormatter.format(currentPrice)}
+        </div>
+      </div>
     </>
   );
 }

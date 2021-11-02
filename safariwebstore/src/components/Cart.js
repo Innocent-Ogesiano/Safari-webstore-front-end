@@ -1,47 +1,58 @@
 import React from "react";
-import { Grid } from "@mui/material";
 import CartItem from "./CartItem";
-
+import cartStyle from "../stylesheets/cart.module.css";
 
 export default function Cart() {
+  const products = [
+    {
+      id: 1,
+      productName: "Shoe",
+      price: 10000,
+      quantity: 1,
+      size: "XL - US",
+    },
+    {
+      id: 1,
+      productName: "T-Shirt",
+      price: 20000,
+      quantity: 1,
+      size: "XL - EU",
+    },
+    {
+      id: 1,
+      productName: "Trousers",
+      price: 70000,
+      quantity: 1,
+      size: "XL - NG",
+    },
+  ];
   return (
     <>
-      <Grid
-        container
-        spacing={{ xs: 0, md: 0, lg: 0 }}
-        style={{ backgroundColor: "white" }}
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
-        xs={11}
-      >
-        <Grid item>
-          <h6 className="cart-item-count">Shopping Cart (2 item)</h6>
-        </Grid>
-        <Grid
-          container
-          spacing={{ xs: 0, md: 0, lg: 0, xl: 0 }}
-          style={{ backgroundColor: "white" }}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item xs>
-            <h6>ITEM DESCRIPTION</h6>
-          </Grid>
-          <Grid item xs>
-            <h6>QUANTITY</h6>
-          </Grid>
-          <Grid item xs>
-            <h6>UNIT PRICE</h6>
-          </Grid>
-          <Grid item xs>
-            <h6>SUB TOTAL</h6>
-          </Grid>
-        </Grid>
-        <CartItem />
-        <CartItem />
-      </Grid>
+      <div className={cartStyle.container}>
+        <div className={cartStyle.row}>
+          <h6>Shopping Cart (2 Items)</h6>
+        </div>
+        <div className={cartStyle.row}>
+          <div className={cartStyle.content}>ITEM DESCRIPTION</div>
+          <div className={cartStyle.quantity}>QUANTITY</div>
+          <div className={cartStyle.price}>UNIT PRICE </div>
+          <div className={cartStyle.subTotal}>SUB TOTAL</div>
+        </div>
+        {products.map((product, key) => (
+          <CartItem key={key} productData={product} />
+        ))}
+
+        <div className={cartStyle.row}>
+          <h6>
+            TOTAL PRICE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x20A6;120,000
+          </h6>
+          <small>Delivery fee not included yet</small>
+        </div>
+        <div className={cartStyle.row}>
+          <button className={cartStyle.shopping}>CONTINUE SHOPPING</button>
+          <button className={cartStyle.checkout}>CONTINUE TO CHECKOUT</button>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Clothes from "./components/Clothes";
@@ -14,13 +14,31 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Logo from "./logo.svg";
 import SignInSignOutPage from "./components/SignInSignOutPage";
 function App() {
+  const [sidebarState, setSideBarState] = useState(false);
+  const toggleSidebar = (sidebarRef) => {
+    if (sidebarState) {
+      sidebarRef.current.style.display = "none";
+      setSideBarState(!sidebarState);
+    } else {
+      sidebarRef.current.style.display = "block";
+      setSideBarState(!sidebarState);
+    }
+  };
   return (
     <>
       <main>
         <Router>
-          <NavBar />
-          <Sidebar />
-          <Footer />
+          <NavBar
+            sidebarState={sidebarState}
+            setSideBarState={setSideBarState}
+            toggleSidebar={toggleSidebar}
+          />
+          <Sidebar
+            sidebarState={sidebarState}
+            setSideBarState={setSideBarState}
+            toggleSidebar={toggleSidebar}
+          />
+          {/* <Footer /> */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/clothes" component={Clothes} />

@@ -2,15 +2,17 @@
 .container {
   display: none;
 }
-#close-icon{
+#close-icon {
   color: white;
   position: absolute;
   right: 7vw;
   top: 3vh;
+  z-index: 100;
+  cursor: pointer;
 }
 
-@media screen and (max-device-width: 396px) {
-  .container {
+@media screen and (max-device-width: 678px) {
+  /* .container {
     position: absolute;
     top: 0;
     left: 0;
@@ -22,15 +24,24 @@
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
-    align-items: baseline;
-  }
+    align-content: flex-start;
+    grid-row-gap: 40px;
+    margin: 0;
+    padding: 0;
+  } */
   .link {
     color: white !important;
     font-weight: 600 !important;
   }
-  .item:hover{
-      width: 100%;
-      border: 2px solid white;
+  .item:hover {
+    width: 100%;
+    border: 2px solid white;
+  }
+  #logo {
+    margin-top: 1.5vh;
+    margin-right: auto;
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
   }
 }
 
