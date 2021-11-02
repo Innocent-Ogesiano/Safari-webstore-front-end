@@ -27,8 +27,6 @@ const SignIn = () => {
     .then(response=>{
         setIsLoading(false)
         setCookie('token',response.data.token,{path:'/'})
-        setCookie('userEmail',userEmail,{path:'/account'})
-        setCookie('password',password,{path:'/account'})
         History.push('/')
 
     })
