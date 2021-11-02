@@ -12,7 +12,7 @@ import Sidebar from "./components/SideBar";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Logo from "./logo.svg";
-import SignInSignUpPage from "./components/SignInSignUpPage";
+import SignInSignOutPage from "./components/SignInSignOutPage";
 function App() {
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
         <Router>
           <NavBar />
           <Sidebar />
-          {/* <Footer /> */}
+          <Footer />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/clothes" component={Clothes} />
@@ -30,7 +30,7 @@ function App() {
               <img svg={Logo} alt="logo" />
             </Route>
             <Route path="/cart" component={Cart} />
-            <Route path="/account" component={SignInSignUpPage} />
+            <Route path="/account" component={SignInSignOutPage} />
             <Account />
             <Route path="/favourite" component={Favourites} />
             <Route exact path="/"></Route>
