@@ -37,9 +37,9 @@ import React,{useState} from "react";
               setSuccessMessage('')
             },5000)
 
-            axios.post('https://safari-webstore-008.herokuapp.com/signup',{email:email,firstName:firstName,
-            lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender,
-            newsLetterSub: newsLetterSub
+            axios.post('http://localhost:8080/signup',{email:email,firstName:firstName,
+            lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender
+           
           
           
           
