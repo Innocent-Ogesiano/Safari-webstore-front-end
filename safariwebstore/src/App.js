@@ -12,6 +12,7 @@ import Sidebar from "./components/SideBar";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Logo from "./logo.svg";
+import SignInSignOutPage from "./components/SignInSignOutPage";
 function App() {
   const [sidebarState, setSideBarState] = useState(false);
   const toggleSidebar = (sidebarRef) => {
@@ -47,7 +48,7 @@ function App() {
               <img svg={Logo} alt="logo" />
             </Route>
             <Route path="/cart" component={Cart} />
-            <Route path="/account" component={Account} />
+            <Route path="/account" component={SignInSignOutPage} />
             <Account />
             <Route path="/favourite" component={Favourites} />
             <Route exact path="/"></Route>

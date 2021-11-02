@@ -7,6 +7,7 @@ export default function SideBar({ toggleSidebar }) {
 
   return (
     <>
+// <<<<<<< cart
       <div
         className={sidebar.container}
         id={sidebar["sidebar"]}
@@ -16,6 +17,11 @@ export default function SideBar({ toggleSidebar }) {
 
         <div className={sidebar.item} onClick={() => toggleSidebar(mySideBar)}>
           <i class="fas fa-times close" id={sidebar["close-icon"]}></i>
+// =======
+//       <div className={sidebar.container}>
+//         <div className={sidebar.item}>
+//           <i className="fas fa-times close" id={sidebar["close-icon"]}></i>
+// >>>>>>> develop
         </div>
 
         <div className={sidebar.item}>
