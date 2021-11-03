@@ -7,6 +7,7 @@ export default function SideBar({ toggleSidebar }) {
 
   return (
     <>
+
       <div
         className={sidebar.container}
         id={sidebar["sidebar"]}
@@ -16,7 +17,6 @@ export default function SideBar({ toggleSidebar }) {
 
         <div className={sidebar.item} onClick={() => toggleSidebar(mySideBar)}>
           <i class="fas fa-times close" id={sidebar["close-icon"]}></i>
-
 
         </div>
 

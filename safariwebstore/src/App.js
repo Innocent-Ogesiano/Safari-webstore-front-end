@@ -18,8 +18,18 @@ function App() {
     <>
       <main>
         <Router>
-          <NavBar />
-          <Sidebar />
+          <NavBar
+            sidebarState={sidebarState}
+            setSideBarState={setSideBarState}
+            toggleSidebar={toggleSidebar}
+          />
+          <Sidebar
+            sidebarState={sidebarState}
+            setSideBarState={setSideBarState}
+            toggleSidebar={toggleSidebar}
+          />
+
+
           <Footer />
           <Switch>
             <Route exact path="/" component={Home} />
