@@ -27,6 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 export default function Home() {
+
   return (
   
 <div className={home.container}>
@@ -53,35 +54,8 @@ export default function Home() {
     ))}
 </Grid>
   </Grid>
-{/* </Container> */}
-
-{/* Pagination part */}
-{/* <Row className='p-3'>
-  <Col></Col>
-  <Col sm ={12} md={6} lg={4} xl={3} >
-  <nav aria-label="Page navigation example">
-    <ul className="pagination">
-      <li className="page-item">
-        <a className="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span className="sr-only">Previous</span>
-        </a>
-      </li>
-      <li className="page-item"><a className="page-link" href="#">1</a></li>
-      <li className="page-item"><a className="page-link" href="#">2</a></li>
-      <li className="page-item"><a className="page-link" href="#">3</a></li>
-      <li className="page-item">
-        <a className="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span className="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  </Col>
-  <Col className='d-flex justify-content-end mx-5'><a href ='#'><img src={navI} alt=''/></a></Col>
-</Row> */}
 </div>
   
   );
+
 }

@@ -57,12 +57,9 @@
   font-weight: 800;
   font-size: 18px;
   line-height: 24px;
-
   letter-spacing: 2px;
   text-transform: uppercase;
-
   /* UI/Background */
-
   color: #ffffff;
 }
 .form .formGroup:nth-last-of-type(2) input {
@@ -87,9 +84,7 @@
   font-size: 18px;
   line-height: 18px;
   /* identical to box height, or 90% */
-
   letter-spacing: 0.2px;
-
   color: #000000;
 }
 .error {
@@ -100,5 +95,4 @@
   color: red;
   border-radius: 5px;
   text-align: center;
-  
 }
