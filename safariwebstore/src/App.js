@@ -38,7 +38,7 @@ function App() {
             setSideBarState={setSideBarState}
             toggleSidebar={toggleSidebar}
           />
-          {/* <Footer /> */}
+          <Footer />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/clothes" component={Clothes} />
