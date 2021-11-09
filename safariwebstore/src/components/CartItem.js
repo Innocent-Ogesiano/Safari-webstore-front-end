@@ -4,9 +4,9 @@ import productImage from "../icons/image1.png";
 import "../styles/numberInput.css";
 import currencyFormatter from "../../src/currencyFormerter";
 
-export default function CartItem(product) {
-  const [currentPrice, setCurrentPrice] = useState(product.productData.price);
-  const currentQuantity = useRef(product.productData.quantity);
+export default function CartItem({productData}) {
+  const [currentPrice, setCurrentPrice] = useState(productData.price);
+  const currentQuantity = useRef(productData.quantity);
   useEffect(() => {
     setCurrentPrice(
       (currentPrice) => currentPrice * currentQuantity.current.value
@@ -22,14 +22,15 @@ export default function CartItem(product) {
       <div className={cartItemStyle.container}>
         <div className={cartItemStyle.content}>
           <img
-            src={productImage}
-            alt={productImage}
+            src={productData.product.imagesList[0].imageURl}
+            alt=""
             className={cartItemStyle.productImage}
+            style={{width:'100px', height:'100px'}}
           />
           <div className={cartItemStyle.mid}>
             <div className={cartItemStyle.productDetails}>
-              <h6>{product.productData.productName}</h6>
-              <small>{product.productData.size}</small>
+              <h6>{productData.product.productName}</h6>
+              <small>{productData.product.size}</small>
             </div>
 
             <div className={cartItemStyle.moveToFavorites}>
@@ -45,7 +46,7 @@ export default function CartItem(product) {
         <div className={cartItemStyle.quantity}>
           <input
             type="number"
-            defaultValue={product.productData.quantity}
+            defaultValue={productData.quantity}
             min="1"
             max="1000"
             ref={currentQuantity}
@@ -54,7 +55,7 @@ export default function CartItem(product) {
           />
         </div>
         <div className={cartItemStyle.price}>
-          {currencyFormatter.format(product.productData.price)}
+          {currencyFormatter.format(productData.price)}
         </div>
         <div className={cartItemStyle.subTotal}>
           {currencyFormatter.format(currentPrice)}

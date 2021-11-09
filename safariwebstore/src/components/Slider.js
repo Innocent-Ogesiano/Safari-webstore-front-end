@@ -38,7 +38,8 @@ const Slider = () => {
                         className ={slideIndex === index + 1? 'slide active-anim': 'slide'}
                         >
                         <img 
-                        src ={process.env .PUBLIC_URL + `Imgs/Img${index + 1}.png`} 
+                        src ={process.env.PUBLIC_URL + `Imgs/Img${index + 1}.png`} 
+                        alt=""
                         />
                     </div>
                 )
