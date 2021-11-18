@@ -1,4 +1,4 @@
-import React, { Component,useRef } from 'react';
+import React, { Component,useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Container,Grid } from '@mui/material';
 import Product from '../components/Product'
@@ -7,19 +7,10 @@ import products from '../products';
 import home from '../stylesheets/home.module.css';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import axios from "axios"
+import Pagination from './Pagination'
+import { useCookies } from 'react-cookie';
 
-import pic from '../asset/img1.png'
-import prod1 from '../asset/prod1.png'
-import prod2 from '../asset/prod2.png'
-import prod3 from '../asset/prod3.png'
-import prod4 from '../asset/prod4.png'
-import prod5 from '../asset/prod5.png'
-import prod6 from '../asset/prod6.png'
-import prod7 from '../asset/prod7.png'
-import prod8 from '../asset/prod8.png'
-import bag4 from '../asset/bag4.png'
-import bag3 from '../asset/bag3.png'
-import navI from '../asset/Vector.png'
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -27,6 +18,56 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 export default function Home() {
+  const [cookies, setCookies] = useCookies()
+  const [productList, setProductList] = useState([])
+  const [cartItems, setCartItems] = useState([])
+  const [favouriteItems, setFavouriteItems] = useState([])
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/products/?pageNo=0&pageSize=30").then(res => {
+    setProductList(res.data)
+  })
+      
+  }, [])
+
+  function addToCart(item) {
+    let newCart = cartItems;
+    if (newCart.includes(item)) {
+        for (let i = 0; i < newCart.length; i++) {
+            if(newCart[i] === item) {
+                newCart.splice(i, 1)
+            }
+        }
+        setCartItems(newCart)
+    } else {
+        newCart.push(item)
+        setCartItems(newCart)
+    }
+    console.log(cartItems)
+    axios.get(`http://localhost:8080/api/products/add_to_cart/` + item.id, {headers: {"Authorization": `Bearer ` + cookies.token}}).then(res => {
+        console.log(res.data)
+    })
+}
+
+function addToFavourite(item) {
+    let newFavourite = favouriteItems;
+    if(newFavourite.includes(item)) {
+        for(let i =0; i < newFavourite.length; i++) {
+            if(newFavourite[i] === item) {
+                newFavourite.splice(i, 1)
+            }
+        }
+        setFavouriteItems(newFavourite)
+    } 
+    else {
+        newFavourite.push(item)
+        setFavouriteItems(newFavourite)
+    }
+    console.log(favouriteItems)
+    axios.get(`http://localhost:8080/api/products/add_favorite/` + item.id, {headers: {"Authorization": `Bearer ` + cookies.token}}).then(res => {
+        console.log(res.data)
+    })
+}
 
   return (
   
@@ -39,7 +80,7 @@ export default function Home() {
     love - and you can see that in the finished item!</p>
     <Grid container spacing={2}>
   <Grid item xs={6} md={8}>
-    <Item>xs=6 md=8</Item>
+    {/* <Item>xs=6 md=8</Item> */}
   </Grid>
   </Grid>
 {/* <Container fluid > */}
@@ -47,11 +88,16 @@ export default function Home() {
 
   <Grid item container spacing={3} alignItems="center"
   justifyContent="center">
-    {products.map((product) => (
-      <Item>
-          <Product product={product} />
-          </Item>
-    ))}
+
+    
+    <Pagination
+        data={productList}
+        RenderComponent={Product}
+        pageLimit={5}
+        dataLimit={15}
+        cart={addToCart}
+        favourite={addToFavourite}
+    />
 </Grid>
   </Grid>
 </div>

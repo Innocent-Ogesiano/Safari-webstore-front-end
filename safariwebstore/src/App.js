@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Clothes from "./components/Clothes";
@@ -10,10 +10,16 @@ import Favourites from "./components/Favourites";
 import NavBar from "./components/NavBar";
 import Sidebar from "./components/SideBar";
 import Footer from "./components/Footer";
+import Checkout from "./components/Checkout"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Logo from "./logo.svg";
 import SignInSignOutPage from "./components/SignInSignOutPage";
 function App() {
+
+  const [sidebarState, setSideBarState] = useState(null)
+  const [toggleSidebar, setToggleSideBar] = useState(null)
+
+
   return (
     <>
       <main>
@@ -29,7 +35,6 @@ function App() {
             toggleSidebar={toggleSidebar}
           />
 
-
           <Footer />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -43,7 +48,8 @@ function App() {
             <Route path="/account" component={SignInSignOutPage} />
             <Account />
             <Route path="/favourite" component={Favourites} />
-            <Route exact path="/"></Route>
+            <Route path="/cart/checkout" component={Checkout} />
+            {/* <Route exact path="/"></Route> */}
             <Route path="/blogs"></Route>
             <Route path="/contact"></Route>
           </Switch>

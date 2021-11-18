@@ -18,6 +18,9 @@
   align-content: space-around !important;
 
 }
+
+
+
   .quantity .quantityInput {
       width: 80% !important;
       margin-inline: auto !important;
@@ -26,6 +29,8 @@
       grid-column: 2/3 !important;
       grid-row: 1/1 !important;
       background-color: yellow !important;
+      width: 100px;
+      height: 100px;
   }
   .content {
       padding: 0.7rem !important;

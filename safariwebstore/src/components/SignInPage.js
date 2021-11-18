@@ -16,7 +16,7 @@ const SignIn = () => {
         setError(null)
      setIsLoading(true);
      console.log(userEmail)
-     axios.post('https://safari-webstore-008.herokuapp.com/authenticate',{email:userEmail,password:password})
+     axios.post('http://localhost:8080/authenticate',{email:userEmail,password:password})
      .then(response=>{
          setIsLoading(false)
          setCookie('token',response.data.token,{path:'/'})

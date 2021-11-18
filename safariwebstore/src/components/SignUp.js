@@ -37,7 +37,10 @@ import React,{useState} from "react";
               setSuccessMessage('')
             },5000)
 
-            axios.post('https://cors-anywhere.herokuapp.com/https://safari-webstore-008.herokuapp.com/signup',{email:email,firstName:firstName,
+            // axios.post('https://cors-anywhere.herokuapp.com/https://safari-webstore-008.herokuapp.com/signup',{email:email,firstName:firstName,
+            // lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender
+           
+            axios.post('http://localhost:8080/signup',{email:email,firstName:firstName,
             lastName:lastName, password: password, confirmPassword:confirmPassword, dateOfBirth: dateOfBirth, gender: gender
            
           
